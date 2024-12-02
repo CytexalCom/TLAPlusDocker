@@ -42,86 +42,62 @@ AliceSendsMsgOne == /\ StatusA = "Init"
                         /\ msgs' = { [receiver |-> Agent, type |-> "msg1", encryptedData |-> [encryptedFor |-> Agent, data1 |-> "NonceA", data2 |-> "Alice"]] }
                     /\ UNCHANGED<<StatusB, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>                        
                            
-BobSendsMsgTwo == 
-  /\ StatusB = "WaitForMsg1"
-  /\ \E msg \in msgs : msg.receiver = "Bob"
-     /\ msg.type = "msg1"
-     /\ msg.encryptedData.encryptedFor = "Bob"
-     /\ msgs' = msgs \cup {[receiver |-> "Alice", type |-> "msg2", encryptedData |-> [encryptedFor |-> "Alice", data1 |-> msg.encryptedData.data1, data2 |-> "Bob"]]}
-  /\ StatusB' = "WaitForMsg3"
-  /\ UNCHANGED<<StatusA, PartnerA>>
-
-
+BobSendsMsgTwo == /\ StatusB = "WaitForMsg1"
+                  /\ \E msg \in msgs : msg.receiver = "Bob"
+                                        /\ msg.type = "msg1"
+                                        /\ msgs' = msgs \cup {
+                                        [receiver |-> "Alice", 
+                                        type |-> "msg2", 
+                                        encryptedData |-> [encryptedFor |-> "Alice", data1 |-> msg.encryptedData.data1, data2 |-> "NonceB"]]
+                                        }
+                    /\ StatusB' = "WaitForMsg3"
+                  /\ UNCHANGED<<StatusA, PartnerA, IntruderKnowsNonceA, IntruderKnowsNonceB>>                    
                     
-AliceSendsMsgThree == 
-  /\ StatusA = "WaitForMsg2"
-  /\ \E msg \in msgs : msg.receiver = "Alice"
-     /\ msg.type = "msg2"
-     /\ msg.encryptedData.encryptedFor = "Alice"
-     /\ msg.encryptedData.data1 = "NonceA"
-     /\ msg.encryptedData.data2 = "Bob"
-  /\ msgs' = msgs \cup {[receiver |-> PartnerA, type |-> "msg3", encryptedData |-> [encryptedFor |-> PartnerA, data1 |-> msg.encryptedData.data2, data2 |-> "Bob"]]}
-  /\ StatusA' = "Done"
-  /\ UNCHANGED<<StatusB, PartnerA>>
-                
+AliceSendsMsgThree == /\ StatusA = "WaitForMsg2"
+                             /\ \E msg \in msgs : msg.receiver = "Alice"
+                                /\ msg.type = "msg2"
+                                /\ msg.encryptedData.encryptedFor = "Alice"
+                                /\ msg.encryptedData.data1 = "NonceA"
+                                /\ msgs' = {[receiver |-> PartnerA, type |-> "msg3", encryptedData |-> [encryptedFor |-> PartnerA, data1 |-> msg.encryptedData.data2, data2 |-> ""] ]}
+                             /\ StatusA' = "Done"
+                             /\ UNCHANGED<<StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>                        
 
-BobReceivesMsgThree ==
-  /\ StatusB = "WaitForMsg3"
-  /\ \E msg \in msgs : msg.receiver = "Bob"
-     /\ msg.type = "msg3"
-     /\ msg.encryptedData.encryptedFor = "Bob"
-     /\ msg.encryptedData.data1 = "NonceB"
-  /\ StatusB' = "Done"
-  /\ UNCHANGED<<StatusA, PartnerA>>
+BobReceivesMsgThree == /\ StatusB = "WaitForMsg3"
+                       /\ \E msg \in msgs : msg.receiver = "Bob"
+                                           /\ msg.type = "msg3"
+                                           /\ msg.encryptedData.encryptedFor = "Bob"
+                                           /\ msg.encryptedData.data2 = "Bob"
+                      /\ StatusB' = "Done"
+                      /\ UNCHANGED<<StatusA, PartnerA, PartnerB, msgs, IntruderKnowsNonceA, IntruderKnowsNonceB>>
+                      
+IntruderLearnsNonceA == \E msg \in msgs : msg.receiver = "Intruder"
+                        /\ msg.type = "msg1"
+                        /\ msg.encryptedData.encryptedFor = "Intruder"
+                        /\ msg.encryptedData.data1 = "NonceA"
+                        /\ IntruderKnowsNonceA' = TRUE
+                        /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, msgs, IntruderKnowsNonceB>>
+                        
 
-IntruderLearnsNonceA ==
-  /\ \E msg \in msgs : msg.receiver = "Intruder"
-     /\ msg.encryptedData.data1 = "NonceA"
-  /\ IntruderKnowsNonceA' = TRUE
-  /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, msgs, IntruderKnowsNonceB>>
-
-IntruderLearnsNonceB ==
-  /\ \E msg \in msgs : msg.receiver = "Intruder"
-     /\ msg.encryptedData.data2 = "NonceB"
-  /\ IntruderKnowsNonceB' = TRUE
-  /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, msgs, IntruderKnowsNonceA>>
-
+IntruderLearnsNonceB == \E msg \in msgs : msg.receiver = "Intruder"
+                        /\ msg.type = "msg2"
+                        /\ msg.encryptedData.encryptedFor = "Intruder"
+                        /\ msg.encryptedData.data1 = "NonceB"
+                        /\ IntruderKnowsNonceB' = TRUE
+                        /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, msgs, IntruderKnowsNonceA>>
                         
 IntruderCatchesAndForwardsMessage == \E Agent \in Agents : \E msg \in msgs : msgs' = {[receiver |-> Agent, type |-> msg.type, encryptedData |-> msg.encryptedData]}
                         /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>                          
 
 KnownNonces == IF IntruderKnowsNonceA THEN (IF IntruderKnowsNonceB  THEN {"NonceI", "NonceA", "NonceB"} ELSE {"NonceI", "NonceA"}) ELSE (IF IntruderKnowsNonceB  THEN {"NonceI", "NonceB"} ELSE {"NonceI"})  
 
-IntruderSendsMessageOne ==
-  /\ msgs' = msgs \cup {[receiver |-> "Bob", type |-> "msg1", encryptedData |-> [encryptedFor |-> "Bob", data1 |-> "NonceI", data2 |-> "Intruder"]]}
-  /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>
-                                                
-IntruderSendsMessageTwo ==
-  /\ msgs' = msgs \cup {[receiver |-> "Alice", type |-> "msg2", encryptedData |-> [encryptedFor |-> "Alice", data1 |-> "NonceI", data2 |-> "NonceB"]]}
-  /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>
-     
-
-IntruderSendsMessageThree ==
-  /\ \E msg \in msgs : msg.receiver = "Intruder"
-     /\ msg.type = "msg2"
-     /\ msg.encryptedData.encryptedFor = "Intruder"
-     /\ msg.encryptedData.data2 = "NonceB"
-  /\ msgs' = msgs \cup {[receiver |-> "Bob", type |-> "msg3", encryptedData |-> [encryptedFor |-> "Bob", data1 |-> msg.encryptedData.data2, data2 |-> "Intruder"]]}
-  /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>
-
-
-AliceAuthenticatesWithBobIffBobAuthenticatesWithAlice ==
-  (StatusA = "Done" /\ StatusB = "Done") => PartnerA = "Bob" /\ PartnerB = "Alice"
-
-
-  IntruderDoesNotKnowNonceA ==
-  IntruderKnowsNonceA = FALSE \/ PartnerA = "Intruder"
-
-IntruderDoesNotKnowNonceB ==
-  IntruderKnowsNonceB = FALSE \/ PartnerB = "Intruder"
-
-AliceAuthenticatesWithBobIffBobAuthenticatesWithAlice ==
-  (StatusA = "Done" /\ StatusB = "Done") => PartnerA = "Bob" /\ PartnerB = "Alice"
+IntruderSendsMessageOne == \E Agent \in Agents : \E msg \in msgs : msgs' = {[receiver |-> Agent, type |-> msg.type, encryptedData |-> msg.encryptedData]}
+                        /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>
+                                                  
+IntruderSendsMessageTwo == \E Agent \in Agents : \E msg \in msgs : msgs' = {[receiver |-> Agent, type |-> msg.type, encryptedData |-> msg.encryptedData]}
+                        /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>
+                        
+IntruderSendsMessageThree == \E Agent \in Agents : \E msg \in msgs : msgs' = {[receiver |-> Agent, type |-> msg.type, encryptedData |-> msg.encryptedData]}
+                        /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>                       
 
 
 Next == \/ AliceSendsMsgOne
