@@ -1,9 +1,9 @@
 {
-    "tlaplus.tlc.modelChecker.options": "-coverage 1 -dump dotcolorize ${modelName}.dot",
     "[tlaplus]": {
         "editor.codeActionsOnSave": {
-            "source": true
+            "source": "explicit"
         },
         "editor.fontLigatures": true
-    }
+    },
+    "tlaplus.tlc.modelChecker.options": "-coverage 1"
 }

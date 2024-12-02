@@ -1,18 +1,18 @@
 strict digraph DiskGraph {
+node [shape=box,style=rounded]
 edge [colorscheme="paired12"]
 nodesep=0.35;
 subgraph cluster_graph {
 color="white";
-1075652029013323286 [label="color = \"red\"",style = filled]
-1075652029013323286 -> 3736222468599431307 [label="",color="2",fontcolor="2"];
-3736222468599431307 [label="color = \"green\""];
-3736222468599431307 -> 8841105317944364761 [label="",color="3",fontcolor="3"];
-8841105317944364761 [label="color = \"yellow\""];
-8841105317944364761 -> 4907227488178701142 [label="",color="4",fontcolor="4"];
-4907227488178701142 [label="color = \"orange\""];
-{rank = same; 1075652029013323286;}
-{rank = same; 3736222468599431307;}
-{rank = same; 8841105317944364761;}
+6633362529927917896 [label="color = \"red\"",style = filled]
+6633362529927917896 -> -5933251858389651536 [label="",color="2",fontcolor="2"];
+-5933251858389651536 [label="color = \"green\"",tooltip="color = \"green\""];
+-5933251858389651536 -> 5383640856874542887 [label="",color="3",fontcolor="3"];
+5383640856874542887 [label="color = \"yellow\"",tooltip="color = \"yellow\""];
+5383640856874542887 -> 6633362529927917896 [label="",color="4",fontcolor="4"];
+{rank = same; 6633362529927917896;}
+{rank = same; -5933251858389651536;}
+{rank = same; 5383640856874542887;}
 }
 subgraph cluster_legend {graph[style=bold];label = "Next State Actions" style="solid"
 node [ labeljust="l",colorscheme="paired12",style=filled,shape=record ]

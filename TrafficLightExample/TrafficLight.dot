@@ -1,0 +1,33 @@
+strict digraph DiskGraph {
+node [shape=box,style=rounded]
+edge [colorscheme="paired12"]
+nodesep=0.35;
+subgraph cluster_graph {
+color="white";
+6559814028544976604 [label="/\\ turn = 1\n/\\ TrafficLight = (0 :> \"red\" @@ 1 :> \"red\")",style = filled]
+6559814028544976604 -> -6985882078105058745 [label="",color="2",fontcolor="2"];
+-6985882078105058745 [label="/\\ turn = 1\n/\\ TrafficLight = (0 :> \"red\" @@ 1 :> \"green\")",tooltip="/\\ turn = 1\n/\\ TrafficLight = (0 :> \"red\" @@ 1 :> \"green\")"];
+-6985882078105058745 -> -963659352285670845 [label="",color="3",fontcolor="3"];
+-963659352285670845 [label="/\\ turn = 0\n/\\ TrafficLight = (0 :> \"red\" @@ 1 :> \"green\")",tooltip="/\\ turn = 0\n/\\ TrafficLight = (0 :> \"red\" @@ 1 :> \"green\")"];
+-6985882078105058745 -> -6985882078105058745 [label="",color="2",fontcolor="2"];
+-963659352285670845 -> -4193319086669788169 [label="",color="4",fontcolor="4"];
+-4193319086669788169 [label="/\\ turn = 0\n/\\ TrafficLight = (0 :> \"red\" @@ 1 :> \"red\")",tooltip="/\\ turn = 0\n/\\ TrafficLight = (0 :> \"red\" @@ 1 :> \"red\")"];
+-4193319086669788169 -> -7833437031009420796 [label="",color="2",fontcolor="2"];
+-7833437031009420796 [label="/\\ turn = 0\n/\\ TrafficLight = (0 :> \"green\" @@ 1 :> \"red\")",tooltip="/\\ turn = 0\n/\\ TrafficLight = (0 :> \"green\" @@ 1 :> \"red\")"];
+-7833437031009420796 -> -79016222992455168 [label="",color="3",fontcolor="3"];
+-79016222992455168 [label="/\\ turn = 1\n/\\ TrafficLight = (0 :> \"green\" @@ 1 :> \"red\")",tooltip="/\\ turn = 1\n/\\ TrafficLight = (0 :> \"green\" @@ 1 :> \"red\")"];
+-7833437031009420796 -> -7833437031009420796 [label="",color="2",fontcolor="2"];
+-79016222992455168 -> 6559814028544976604 [label="",color="4",fontcolor="4"];
+{rank = same; 6559814028544976604;}
+{rank = same; -6985882078105058745;}
+{rank = same; -963659352285670845;}
+{rank = same; -4193319086669788169;}
+{rank = same; -7833437031009420796;}
+{rank = same; -79016222992455168;}
+}
+subgraph cluster_legend {graph[style=bold];label = "Next State Actions" style="solid"
+node [ labeljust="l",colorscheme="paired12",style=filled,shape=record ]
+Control [label="Control",fillcolor=3]
+SwitchToGreen [label="SwitchToGreen",fillcolor=2]
+SwitchToRed [label="SwitchToRed",fillcolor=4]
+}}

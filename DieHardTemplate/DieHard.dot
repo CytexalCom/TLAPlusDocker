@@ -1,0 +1,136 @@
+strict digraph DiskGraph {
+node [shape=box,style=rounded]
+edge [colorscheme="paired12"]
+nodesep=0.35;
+subgraph cluster_graph {
+color="white";
+3354685751151950143 [label="/\\ FiveGallon = 0\n/\\ ThreeGallon = 0",style = filled]
+3354685751151950143 -> -5412070886745445267 [label="",color="2",fontcolor="2"];
+-5412070886745445267 [label="/\\ FiveGallon = 5\n/\\ ThreeGallon = 0",tooltip="/\\ FiveGallon = 5\n/\\ ThreeGallon = 0"];
+3354685751151950143 -> 3354685751151950143 [label="",color="3",fontcolor="3"];
+3354685751151950143 -> 135330099885669846 [label="",color="4",fontcolor="4"];
+135330099885669846 [label="/\\ FiveGallon = 0\n/\\ ThreeGallon = 3",tooltip="/\\ FiveGallon = 0\n/\\ ThreeGallon = 3"];
+3354685751151950143 -> 3354685751151950143 [label="",color="5",fontcolor="5"];
+3354685751151950143 -> 3354685751151950143 [label="",color="6",fontcolor="6"];
+3354685751151950143 -> 3354685751151950143 [label="",color="7",fontcolor="7"];
+-5412070886745445267 -> -5412070886745445267 [label="",color="2",fontcolor="2"];
+-5412070886745445267 -> 3354685751151950143 [label="",color="3",fontcolor="3"];
+-5412070886745445267 -> -7238831772938639228 [label="",color="4",fontcolor="4"];
+-7238831772938639228 [label="/\\ FiveGallon = 5\n/\\ ThreeGallon = 3",tooltip="/\\ FiveGallon = 5\n/\\ ThreeGallon = 3"];
+-5412070886745445267 -> -5412070886745445267 [label="",color="5",fontcolor="5"];
+-5412070886745445267 -> -5412070886745445267 [label="",color="6",fontcolor="6"];
+-5412070886745445267 -> 3724944561518102779 [label="",color="7",fontcolor="7"];
+3724944561518102779 [label="/\\ FiveGallon = 2\n/\\ ThreeGallon = 3",tooltip="/\\ FiveGallon = 2\n/\\ ThreeGallon = 3"];
+135330099885669846 -> -7238831772938639228 [label="",color="2",fontcolor="2"];
+135330099885669846 -> 135330099885669846 [label="",color="3",fontcolor="3"];
+135330099885669846 -> 135330099885669846 [label="",color="4",fontcolor="4"];
+135330099885669846 -> 3354685751151950143 [label="",color="5",fontcolor="5"];
+135330099885669846 -> -2155021017998511334 [label="",color="6",fontcolor="6"];
+-2155021017998511334 [label="/\\ FiveGallon = 3\n/\\ ThreeGallon = 0",tooltip="/\\ FiveGallon = 3\n/\\ ThreeGallon = 0"];
+135330099885669846 -> 135330099885669846 [label="",color="7",fontcolor="7"];
+-7238831772938639228 -> -7238831772938639228 [label="",color="2",fontcolor="2"];
+-7238831772938639228 -> 135330099885669846 [label="",color="3",fontcolor="3"];
+-7238831772938639228 -> -7238831772938639228 [label="",color="4",fontcolor="4"];
+-7238831772938639228 -> -5412070886745445267 [label="",color="5",fontcolor="5"];
+-7238831772938639228 -> -7238831772938639228 [label="",color="6",fontcolor="6"];
+-7238831772938639228 -> -7238831772938639228 [label="",color="7",fontcolor="7"];
+3724944561518102779 -> -7238831772938639228 [label="",color="2",fontcolor="2"];
+3724944561518102779 -> 135330099885669846 [label="",color="3",fontcolor="3"];
+3724944561518102779 -> 3724944561518102779 [label="",color="4",fontcolor="4"];
+3724944561518102779 -> 2080486827418766354 [label="",color="5",fontcolor="5"];
+2080486827418766354 [label="/\\ FiveGallon = 2\n/\\ ThreeGallon = 0",tooltip="/\\ FiveGallon = 2\n/\\ ThreeGallon = 0"];
+3724944561518102779 -> -5412070886745445267 [label="",color="6",fontcolor="6"];
+3724944561518102779 -> 3724944561518102779 [label="",color="7",fontcolor="7"];
+-2155021017998511334 -> -5412070886745445267 [label="",color="2",fontcolor="2"];
+-2155021017998511334 -> 3354685751151950143 [label="",color="3",fontcolor="3"];
+-2155021017998511334 -> -3640837979757266957 [label="",color="4",fontcolor="4"];
+-3640837979757266957 [label="/\\ FiveGallon = 3\n/\\ ThreeGallon = 3",tooltip="/\\ FiveGallon = 3\n/\\ ThreeGallon = 3"];
+-2155021017998511334 -> -2155021017998511334 [label="",color="5",fontcolor="5"];
+-2155021017998511334 -> -2155021017998511334 [label="",color="6",fontcolor="6"];
+-2155021017998511334 -> 135330099885669846 [label="",color="7",fontcolor="7"];
+2080486827418766354 -> -5412070886745445267 [label="",color="2",fontcolor="2"];
+2080486827418766354 -> 3354685751151950143 [label="",color="3",fontcolor="3"];
+2080486827418766354 -> 3724944561518102779 [label="",color="4",fontcolor="4"];
+2080486827418766354 -> 2080486827418766354 [label="",color="5",fontcolor="5"];
+2080486827418766354 -> 2080486827418766354 [label="",color="6",fontcolor="6"];
+2080486827418766354 -> 1962048100319428209 [label="",color="7",fontcolor="7"];
+1962048100319428209 [label="/\\ FiveGallon = 0\n/\\ ThreeGallon = 2",tooltip="/\\ FiveGallon = 0\n/\\ ThreeGallon = 2"];
+-3640837979757266957 -> -7238831772938639228 [label="",color="2",fontcolor="2"];
+-3640837979757266957 -> 135330099885669846 [label="",color="3",fontcolor="3"];
+-3640837979757266957 -> -3640837979757266957 [label="",color="4",fontcolor="4"];
+-3640837979757266957 -> -2155021017998511334 [label="",color="5",fontcolor="5"];
+-3640837979757266957 -> -5891231217879912502 [label="",color="6",fontcolor="6"];
+-5891231217879912502 [label="/\\ FiveGallon = 5\n/\\ ThreeGallon = 1",tooltip="/\\ FiveGallon = 5\n/\\ ThreeGallon = 1"];
+-3640837979757266957 -> -3640837979757266957 [label="",color="7",fontcolor="7"];
+1962048100319428209 -> -9128564983222703325 [label="",color="2",fontcolor="2"];
+-9128564983222703325 [label="/\\ FiveGallon = 5\n/\\ ThreeGallon = 2",tooltip="/\\ FiveGallon = 5\n/\\ ThreeGallon = 2"];
+1962048100319428209 -> 1962048100319428209 [label="",color="3",fontcolor="3"];
+1962048100319428209 -> 135330099885669846 [label="",color="4",fontcolor="4"];
+1962048100319428209 -> 3354685751151950143 [label="",color="5",fontcolor="5"];
+1962048100319428209 -> 2080486827418766354 [label="",color="6",fontcolor="6"];
+1962048100319428209 -> 1962048100319428209 [label="",color="7",fontcolor="7"];
+-5891231217879912502 -> -5891231217879912502 [label="",color="2",fontcolor="2"];
+-5891231217879912502 -> 3770760502601808536 [label="",color="3",fontcolor="3"];
+3770760502601808536 [label="/\\ FiveGallon = 0\n/\\ ThreeGallon = 1",tooltip="/\\ FiveGallon = 0\n/\\ ThreeGallon = 1"];
+-5891231217879912502 -> -7238831772938639228 [label="",color="4",fontcolor="4"];
+-5891231217879912502 -> -5412070886745445267 [label="",color="5",fontcolor="5"];
+-5891231217879912502 -> -5891231217879912502 [label="",color="6",fontcolor="6"];
+-5891231217879912502 -> -3640837979757266957 [label="",color="7",fontcolor="7"];
+-9128564983222703325 -> -9128564983222703325 [label="",color="2",fontcolor="2"];
+-9128564983222703325 -> 1962048100319428209 [label="",color="3",fontcolor="3"];
+-9128564983222703325 -> -7238831772938639228 [label="",color="4",fontcolor="4"];
+-9128564983222703325 -> -5412070886745445267 [label="",color="5",fontcolor="5"];
+-9128564983222703325 -> -9128564983222703325 [label="",color="6",fontcolor="6"];
+-9128564983222703325 -> 7296408268156442508 [label="",color="7",fontcolor="7"];
+7296408268156442508 [label="/\\ FiveGallon = 4\n/\\ ThreeGallon = 3",tooltip="/\\ FiveGallon = 4\n/\\ ThreeGallon = 3"];
+3770760502601808536 -> -5891231217879912502 [label="",color="2",fontcolor="2"];
+3770760502601808536 -> 3770760502601808536 [label="",color="3",fontcolor="3"];
+3770760502601808536 -> 135330099885669846 [label="",color="4",fontcolor="4"];
+3770760502601808536 -> 3354685751151950143 [label="",color="5",fontcolor="5"];
+3770760502601808536 -> -3438867094863116745 [label="",color="6",fontcolor="6"];
+-3438867094863116745 [label="/\\ FiveGallon = 1\n/\\ ThreeGallon = 0",tooltip="/\\ FiveGallon = 1\n/\\ ThreeGallon = 0"];
+3770760502601808536 -> 3770760502601808536 [label="",color="7",fontcolor="7"];
+7296408268156442508 -> -7238831772938639228 [label="",color="2",fontcolor="2"];
+7296408268156442508 -> 135330099885669846 [label="",color="3",fontcolor="3"];
+7296408268156442508 -> 7296408268156442508 [label="",color="4",fontcolor="4"];
+7296408268156442508 -> 5344922017526420325 [label="",color="5",fontcolor="5"];
+5344922017526420325 [label="/\\ FiveGallon = 4\n/\\ ThreeGallon = 0",tooltip="/\\ FiveGallon = 4\n/\\ ThreeGallon = 0"];
+7296408268156442508 -> -9128564983222703325 [label="",color="6",fontcolor="6"];
+7296408268156442508 -> 7296408268156442508 [label="",color="7",fontcolor="7"];
+-3438867094863116745 -> -5412070886745445267 [label="",color="2",fontcolor="2"];
+-3438867094863116745 -> 3354685751151950143 [label="",color="3",fontcolor="3"];
+-3438867094863116745 -> -60721147355594018 [label="",color="4",fontcolor="4"];
+-60721147355594018 [label="/\\ FiveGallon = 1\n/\\ ThreeGallon = 3",tooltip="/\\ FiveGallon = 1\n/\\ ThreeGallon = 3"];
+-3438867094863116745 -> -3438867094863116745 [label="",color="5",fontcolor="5"];
+-3438867094863116745 -> -3438867094863116745 [label="",color="6",fontcolor="6"];
+-3438867094863116745 -> 3770760502601808536 [label="",color="7",fontcolor="7"];
+5344922017526420325 -> -5412070886745445267 [label="",color="2",fontcolor="2"];
+5344922017526420325 -> 3354685751151950143 [label="",color="3",fontcolor="3"];
+5344922017526420325 -> 7296408268156442508 [label="",color="4",fontcolor="4"];
+5344922017526420325 -> 5344922017526420325 [label="",color="5",fontcolor="5"];
+5344922017526420325 -> 5344922017526420325 [label="",color="6",fontcolor="6"];
+5344922017526420325 -> -60721147355594018 [label="",color="7",fontcolor="7"];
+-60721147355594018 -> -7238831772938639228 [label="",color="2",fontcolor="2"];
+-60721147355594018 -> 135330099885669846 [label="",color="3",fontcolor="3"];
+-60721147355594018 -> -60721147355594018 [label="",color="4",fontcolor="4"];
+-60721147355594018 -> -3438867094863116745 [label="",color="5",fontcolor="5"];
+-60721147355594018 -> 5344922017526420325 [label="",color="6",fontcolor="6"];
+-60721147355594018 -> -60721147355594018 [label="",color="7",fontcolor="7"];
+{rank = same; 3354685751151950143;}
+{rank = same; -5412070886745445267;135330099885669846;}
+{rank = same; 3724944561518102779;-2155021017998511334;-7238831772938639228;}
+{rank = same; 2080486827418766354;-3640837979757266957;}
+{rank = same; 1962048100319428209;-5891231217879912502;}
+{rank = same; -9128564983222703325;3770760502601808536;}
+{rank = same; 7296408268156442508;-3438867094863116745;}
+{rank = same; -60721147355594018;5344922017526420325;}
+}
+subgraph cluster_legend {graph[style=bold];label = "Next State Actions" style="solid"
+node [ labeljust="l",colorscheme="paired12",style=filled,shape=record ]
+FillThreeGallon [label="FillThreeGallon",fillcolor=4]
+FillFiveGallon [label="FillFiveGallon",fillcolor=2]
+EmptyThreeGallon [label="EmptyThreeGallon",fillcolor=5]
+PourThreeToFive [label="PourThreeToFive",fillcolor=6]
+EmptyFiveGallon [label="EmptyFiveGallon",fillcolor=3]
+PourFiveToThree [label="PourFiveToThree",fillcolor=7]
+}}
