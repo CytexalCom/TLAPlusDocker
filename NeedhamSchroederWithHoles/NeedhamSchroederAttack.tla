@@ -54,13 +54,13 @@ BobSendsMsgTwo == /\ StatusB = "WaitForMsg1"
                   /\ UNCHANGED<<StatusA, PartnerA, IntruderKnowsNonceA, IntruderKnowsNonceB>>                    
                     
 AliceSendsMsgThree == /\ StatusA = "WaitForMsg2"
-                             /\ \E msg \in msgs : msg.receiver = "Alice"
-                                /\ msg.type = "msg2"
-                                /\ msg.encryptedData.encryptedFor = "Alice"
-                                /\ msg.encryptedData.data1 = "NonceA"
-                                /\ msgs' = {[receiver |-> PartnerA, type |-> "msg3", encryptedData |-> [encryptedFor |-> PartnerA, data1 |-> msg.encryptedData.data2, data2 |-> ""] ]}
-                             /\ StatusA' = "Done"
-                             /\ UNCHANGED<<StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>                        
+                      /\ StatusA' = "Done"
+                      /\ \E msg \in msgs : msg.receiver = "Alice"
+                                            /\ msg.type = "msg2"
+                                            /\ msg.encryptedData.encryptedFor = "Alice"
+                                            /\ msg.encryptedData.data1 = "NonceA"
+                                            /\ msgs' = {[receiver |-> PartnerA, type |-> "msg3", encryptedData |-> [encryptedFor |-> PartnerA, data1 |-> msg.encryptedData.data2, data2 |-> ""] ]}
+                      /\ UNCHANGED<<StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>                        
 
 BobReceivesMsgThree == /\ StatusB = "WaitForMsg3"
                        /\ \E msg \in msgs : msg.receiver = "Bob"
@@ -95,7 +95,7 @@ IntruderSendsMessageOne == \E Agent \in Agents : \E msg \in msgs : msgs' = {[rec
                                                   
 IntruderSendsMessageTwo == \E Agent \in Agents : \E msg \in msgs : msgs' = {[receiver |-> Agent, type |-> msg.type, encryptedData |-> msg.encryptedData]}
                         /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>
-                        
+
 IntruderSendsMessageThree == \E Agent \in Agents : \E msg \in msgs : msgs' = {[receiver |-> Agent, type |-> msg.type, encryptedData |-> msg.encryptedData]}
                         /\ UNCHANGED<<StatusA, StatusB, PartnerA, PartnerB, IntruderKnowsNonceA, IntruderKnowsNonceB>>                       
 
